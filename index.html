@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Bro 🎂</title>
     <style>
-        body { margin:0; height:100vh; background:linear-gradient(135deg,#0f001a,#2a0055); color:white; font-family:Arial,sans-serif; text-align:center; }
+        body { margin:0; height:100vh; background:linear-gradient(135deg,#0f001a,#2a0055); color:white; font-family:Arial,sans-serif; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; }
         h1 { font-size:36px; margin:10px 0; }
         .subtitle { font-size:22px; margin:8px 0; }
         .wish { font-size:18px; max-width:620px; margin:15px auto; line-height:1.5; }
@@ -15,8 +15,11 @@
         .top { width:145px;height:48px;background:linear-gradient(#fff7d1,#ffe68a);border-radius:50%;position:absolute;top:95px;left:77px; }
         .candle { width:18px;height:75px;background:linear-gradient(#ffeb3b,#ffd000);position:absolute;left:50%;top:45px;transform:translateX(-50%);border-radius:8px; }
         .flame { width:24px;height:30px;background:linear-gradient(#ff4500,#ffeb3b);border-radius:50% 50% 40% 40%;position:absolute;top:-33px;left:50%;transform:translateX(-50%);animation:flicker 0.07s infinite alternate; }
-        .slideshow { display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:20; }
-        .slide { width:100%; height:100%; object-fit:cover; position:absolute; opacity:0; transition:opacity 1s; }
+        
+        /* تنسيق مربع الصور */
+        .slideshow { display:none; width: 400px; height: 400px; position: relative; border: 5px solid white; border-radius: 15px; overflow: hidden; background: black; }
+        .slide { width:100%; height:100%; object-fit:contain; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s; }
+        
         @keyframes flicker { from { transform:translateX(-50%) scale(1); } to { transform:translateX(-50%) scale(1.4); } }
     </style>
 </head>
@@ -42,6 +45,7 @@
     </div>
 
     <script>
+        // وقت ظهور التهنئة في البداية (5000 يعني 5 ثوانٍ)
         setTimeout(() => {
             document.getElementById('cakePage').style.display = 'none';
             document.getElementById('slideshow').style.display = 'block';
@@ -53,8 +57,9 @@
                 current = (current + 1) % slides.length;
             }
             showNext();
-            setInterval(showNext, 2000);
-        }, 8000);
+            // سرعة الصور (2000 يعني ثانيتين)
+            setInterval(showNext, 2000); 
+        }, 5000);
     </script>
 </body>
 </html>
