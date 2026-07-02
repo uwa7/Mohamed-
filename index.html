@@ -21,8 +21,8 @@
         
         #footer { display:none; font-size: 32px; color: #ffeb3b; font-weight: bold; opacity: 0; transition: opacity 2s ease-in-out; text-shadow: 0 0 15px #ff4500; }
         
-        /* زر البدء */
-        #startButton { padding: 15px 30px; font-size: 20px; cursor: pointer; background: #ff4d6d; color: white; border: none; border-radius: 50px; margin-top: 20px; }
+        #startButton { padding: 15px 30px; font-size: 20px; cursor: pointer; background: #ff4d6d; color: white; border: none; border-radius: 50px; margin-top: 20px; transition: 0.3s; }
+        #startButton:hover { transform: scale(1.1); }
         
         @keyframes flicker { from { transform:translateX(-50%) scale(1); } to { transform:translateX(-50%) scale(1.4); } }
     </style>
@@ -31,7 +31,7 @@
     <audio id="birthdaySong" src="mage.mp3" loop></audio>
 
     <div id="startScreen">
-        <h1>Welcome Bro! 🎉</h1>
+        <h1>Happy Birthday! 🎉</h1>
         <button id="startButton">اضغط هنا لبدء المفاجأة 🎁</button>
     </div>
 
@@ -59,15 +59,10 @@
 
     <script>
         document.getElementById('startButton').addEventListener('click', function() {
-            // إخفاء شاشة البداية وإظهار صفحة التهنئة
             document.getElementById('startScreen').style.display = 'none';
             document.getElementById('cakePage').style.display = 'block';
+            document.getElementById('birthdaySong').play();
             
-            // تشغيل الأغنية
-            const audio = document.getElementById('birthdaySong');
-            audio.play();
-            
-            // بدء التوقيت بعد 5 ثواني
             setTimeout(() => {
                 document.getElementById('cakePage').style.display = 'none';
                 document.getElementById('slideshow').style.display = 'block';
